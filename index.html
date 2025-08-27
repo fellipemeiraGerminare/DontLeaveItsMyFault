@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGOR - Tyler, The Creator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff69b4, #98fb98);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .album-title {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.5); }
+            to { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.8); }
+        }
+
+        .artist-name {
+            font-size: 1.5rem;
+            color: #fff;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .release-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .album-cover {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .album-cover:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .album-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .album-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #ff1493;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ff1493;
+            padding-bottom: 10px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .tracklist {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+
+        .track:hover {
+            background: rgba(255, 105, 180, 0.1);
+            padding-left: 10px;
+            border-radius: 10px;
+        }
+
+        .track:last-child {
+            border-bottom: none;
+        }
+
+        .track-number {
+            font-weight: bold;
+            color: #ff1493;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .track-title {
+            flex-grow: 1;
+            font-weight: 500;
+        }
+
+        .track-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .awards {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .awards h2 {
+            color: #b8860b;
+            margin-bottom: 20px;
+        }
+
+        .award-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #b8860b;
+        }
+
+        .concept {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .album-title {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .album-info, .tracklist, .concept {
+                padding: 20px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .album-title {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="album-title">IGOR</h1>
+            <p class="artist-name">Tyler, The Creator</p>
+            <div class="release-info">Lançado em 17 de maio de 2019</div>
+        </header>
+
+        <div class="main-content">
+            <div class="album-cover">
+                <img src="upload/search_images/2MxX8EwoPPJ2.jpg" alt="Capa do álbum IGOR">
+            </div>
+
+            <div class="album-info">
+                <h2 class="section-title">Sobre o Álbum</h2>
+                <p class="description">
+                    IGOR é o sexto álbum de estúdio de Tyler, The Creator, lançado em 17 de maio de 2019. 
+                    Este álbum conceitual explora um triângulo amoroso complexo e doloroso, marcando uma 
+                    evolução significativa no som e na maturidade artística de Tyler. Com uma produção 
+                    inovadora e letras profundamente pessoais, IGOR representa Tyler em sua máxima expressão criativa.
+                </p>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Faixas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">39:46</span>
+                        <span class="stat-label">Duração</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2020</span>
+                        <span class="stat-label">Grammy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="awards">
+            <h2 class="section-title">Prêmios e Reconhecimento</h2>
+            <div class="award-item">🏆 Grammy Award - Melhor Álbum de Rap (2020)</div>
+            <div class="award-item">⭐ Aclamação crítica universal</div>
+            <div class="award-item">📈 Primeiro lugar na Billboard 200</div>
+        </div>
+
+        <div class="concept">
+            <h2 class="section-title">Conceito do Álbum</h2>
+            <p class="description">
+                IGOR é um álbum conceitual que narra a história de um triângulo amoroso devastador. 
+                Tyler interpreta o personagem de Igor, uma referência ao assistente grotesco do Dr. Frankenstein, 
+                explorando temas de amor não correspondido, ciúme e obsessão. O álbum segue o arco emocional 
+                de um relacionamento que começa com paixão intensa e termina em desilusão e aceitação.
+            </p>
+            <p class="description">
+                A narrativa se desenvolve através de diferentes personas e vozes, com Tyler usando técnicas 
+                vocais variadas e produção experimental para transmitir as complexidades emocionais da história. 
+                O álbum representa uma mudança significativa do rap tradicional para um som mais experimental 
+                e melódico, incorporando elementos de R&B, soul e música eletrônica.
+            </p>
+        </div>
+
+        <div class="tracklist">
+            <h2 class="section-title">Lista de Faixas</h2>
+            <div class="track">
+                <span class="track-number">1.</span>
+                <span class="track-title">IGOR'S THEME</span>
+                <span class="track-duration">3:20</span>
+            </div>
+            <div class="track">
+                <span class="track-number">2.</span>
+                <span class="track-title">EARFQUAKE</span>
+                <span class="track-duration">3:10</span>
+            </div>
+            <div class="track">
+                <span class="track-number">3.</span>
+                <span class="track-title">I THINK</span>
+                <span class="track-duration">3:32</span>
+            </div>
+            <div class="track">
+                <span class="track-number">4.</span>
+                <span class="track-title">EXACTLY WHAT YOU RUN FROM YOU END UP CHASING</span>
+                <span class="track-duration">0:14</span>
+            </div>
+            <div class="track">
+                <span class="track-number">5.</span>
+                <span class="track-title">RUNNING OUT OF TIME</span>
+                <span class="track-duration">2:57</span>
+            </div>
+            <div class="track">
+                <span class="track-number">6.</span>
+                <span class="track-title">NEW MAGIC WAND</span>
+                <span class="track-duration">3:15</span>
+            </div>
+            <div class="track">
+                <span class="track-number">7.</span>
+                <span class="track-title">A BOY IS A GUN*</span>
+                <span class="track-duration">3:30</span>
+            </div>
+            <div class="track">
+                <span class="track-number">8.</span>
+                <span class="track-title">PUPPET</span>
+                <span class="track-duration">2:58</span>
+            </div>
+            <div class="track">
+                <span class="track-number">9.</span>
+                <span class="track-title">WHAT'S GOOD</span>
+                <span class="track-duration">3:26</span>
+            </div>
+            <div class="track">
+                <span class="track-number">10.</span>
+                <span class="track-title">GONE, GONE / THANK YOU</span>
+                <span class="track-duration">6:15</span>
+            </div>
+            <div class="track">
+                <span class="track-number">11.</span>
+                <span class="track-title">I DON'T LOVE YOU ANYMORE</span>
+                <span class="track-duration">2:39</span>
+            </div>
+            <div class="track">
+                <span class="track-number">12.</span>
+                <span class="track-title">ARE WE STILL FRIENDS?</span>
+                <span class="track-duration">4:25</span>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <img src="upload/search_images/2eSv658wrNoQ.jpg" alt="IGOR Vinyl">
+            <img src="upload/search_images/6TrKXiCxLYsF.jpeg" alt="IGOR Green Cover">
+            <img src="upload/search_images/xq9vyV3mF8h5.jpeg" alt="IGOR Yellow Cover">
+            <img src="upload/search_images/DXWjRUVQxtNN.jpg" alt="IGOR Aesthetic">
+        </div>
+
+        <footer>
+            <p>&copy; 2019 Columbia Records. Todos os direitos reservados.</p>
+            <p>IGOR - Tyler, The Creator | Uma obra-prima da música contemporânea</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona interatividade às faixas
+        document.querySelectorAll('.track').forEach(track => {
+            track.addEventListener('click', function() {
+                this.style.background = 'rgba(255, 105, 180, 0.2)';
+                setTimeout(() => {
+                    this.style.background = '';
+                }, 300);
+            });
+        });
+
+        // Efeito de parallax suave no scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('header');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+
+        // Animação de entrada para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplica animação a todos os elementos principais
+        document.querySelectorAll('.album-info, .tracklist, .concept, .awards').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
